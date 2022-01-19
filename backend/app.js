@@ -10,7 +10,7 @@ const path = require('path');
 
 const userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb+srv://djow:gofullstack@cluster0.k2pxh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://****************************************************',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
