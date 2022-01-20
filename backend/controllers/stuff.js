@@ -44,9 +44,10 @@ exports.getOneThing = (req, res, next) => {
 //req.body.heat, etc.).
 //Si un fichier est fourni, la sauce transformée en chaîne de caractères se trouve dans req.body.sauce
 exports.modifyThing = (req, res, next) => {
+  console.log(req.body, req.file);
   const thingObject = req.file ?
     {
-      ...JSON.parse(req.body.thing),
+      ...JSON.parse(req.body.sauce),
       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     } : { ...req.body };
   Thing.updateOne({ _id: req.params.id }, { ...thingObject, _id: req.params.id })
