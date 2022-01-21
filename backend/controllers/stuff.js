@@ -5,7 +5,7 @@ const fs = require('fs');
 //Capture et enregistre l'image, analyse la sauce transformée en chaîne de caractères et 
 //l'enregistre dans la base de données en définissant correctement son imageUrl. Initialise les likes 
 //et dislikes de la sauce à 0 et les usersLiked et usersDisliked avec des tableaux vides.
-exports.createThing = (req, res, next) => {
+const createThing = (req, res, next) => {
   const thingObject = JSON.parse(req.body.sauce);
   delete thingObject._id;
   const thing = new Thing({
@@ -21,7 +21,7 @@ exports.createThing = (req, res, next) => {
 
 
 //Renvoie la sauce avec l’_id fourni.
-exports.getOneThing = (req, res, next) => {
+const getOneThing = (req, res, next) => {
   Thing.findOne({
     _id: req.params.id
   }).then(
@@ -43,7 +43,7 @@ exports.getOneThing = (req, res, next) => {
 //Si aucun fichier n'est fourni,les informations sur la sauce se trouvent directement dans le corps de la requête (req.body.name,
 //req.body.heat, etc.).
 //Si un fichier est fourni, la sauce transformée en chaîne de caractères se trouve dans req.body.sauce
-exports.modifyThing = (req, res, next) => {
+const modifyThing = (req, res, next) => {
   console.log(req.body, req.file);
   const thingObject = req.file ?
     {
@@ -59,7 +59,7 @@ exports.modifyThing = (req, res, next) => {
 
 
 //Supprime la sauce avec l'_id fourni.
-exports.deleteThing = (req, res, next) => {
+const deleteThing = (req, res, next) => {
   Thing.findOne({ _id: req.params.id })
     .then(thing => {
       const filename = thing.imageUrl.split('/images/')[1];
@@ -76,7 +76,7 @@ exports.deleteThing = (req, res, next) => {
 
 
 //Renvoie un tableau de toutes les sauces de la base de données.
-exports.getAllStuff = (req, res, next) => {
+const getAllStuff = (req, res, next) => {
   Thing.find().then(
     (things) => {
       res.status(200).json(things);
@@ -91,7 +91,7 @@ exports.getAllStuff = (req, res, next) => {
 };
 
 //Définit le statut « Like » pour l' userId fourni.
-exports.likeThing = (req, res) => {
+const likeThing = (req, res) => {
   if (req.body.like === 1) {
     Thing.findOneAndUpdate(
       { _id: req.params.id },
@@ -138,3 +138,4 @@ exports.likeThing = (req, res) => {
 }
 
 
+module.exports = { createThing, getOneThing, modifyThing, deleteThing, getAllStuff, likeThing };
