@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+//Fabrique un schema pour les sauces dans la base de données.
 const thingSchema = mongoose.Schema({
   userId:        {type: String, required: true }, 
   name:          {type: String, required: true }, 

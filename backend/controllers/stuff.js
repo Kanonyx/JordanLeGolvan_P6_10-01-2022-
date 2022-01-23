@@ -1,7 +1,7 @@
 const Thing = require('../models/thing');
-const fs = require('fs');
+const fs = require('fs'); // Importation du module file system pour Multer
 
-
+//Creation d'une sauce
 //Capture et enregistre l'image, analyse la sauce transformée en chaîne de caractères et 
 //l'enregistre dans la base de données en définissant correctement son imageUrl. Initialise les likes 
 //et dislikes de la sauce à 0 et les usersLiked et usersDisliked avec des tableaux vides.

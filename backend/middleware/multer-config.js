@@ -10,6 +10,7 @@ const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, 'images');
   },
+  //Remplace les espaces par des _ *
   filename: (req, file, callback) => {
     const name = file.originalname.split(' ').join('_');
     const extension = MIME_TYPES[file.mimetype];
