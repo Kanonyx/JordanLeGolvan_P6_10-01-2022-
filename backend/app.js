@@ -12,7 +12,7 @@ const path = require('path');
 
 const userRoutes = require('./routes/user');
 //connection à la base de données avec l'aide du module dotenv
-mongoose.connect(process.env.MONGO_PSWD, 
+mongoose.connect(process.env.MONGO_PSWD, // protection grace àprocess.env.MONGO_PSWD est une variable d'environnement qui contient le mot de passe de la base de données
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
